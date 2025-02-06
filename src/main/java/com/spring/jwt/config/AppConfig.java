@@ -1,3 +1,4 @@
+
 package com.spring.jwt.config;
 
 import com.spring.jwt.config.filter.CustomAuthenticationProvider;
@@ -159,25 +160,20 @@ public class AppConfig {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of(
-                "https://caryanamindia.com",
-                "https://www.caryanamindia.com",
-                "http://localhost:5173",
-                "https://localhost:3000",
-                "http://localhost:8081"
-        ));
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowCredentials(true);
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept", "Origin"));
-        configuration.setExposedHeaders(List.of("Authorization"));
-        configuration.setMaxAge(3600L);
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
+        return new CorsConfigurationSource() {
+            @Override
+            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+                CorsConfiguration config = new CorsConfiguration();
 
-        return source;
- 
-}
-
+                config.setAllowedOrigins(Arrays.asList("https://caryanamindia.com","https://www.caryanamindia.com", "http://localhost:5173","https://localhost","https://localhost:3000","http://localhost:8081"));
+                config.setAllowedMethods(Collections.singletonList("*"));
+                config.setAllowCredentials(true);
+                config.setAllowedHeaders(Collections.singletonList("*"));
+                config.setExposedHeaders(Arrays.asList("Authorization"));
+                config.setMaxAge(3600L);
+                return config;
+            }
+        };
+    }
 }
