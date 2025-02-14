@@ -141,7 +141,6 @@ public class AppConfig {
                 .requestMatchers("/colors/**").permitAll() 
                 .requestMatchers("/b2b/**").permitAll()
                 .requestMatchers("/b2bConfirm/**").permitAll()
-                .requestMachers("/account/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .authenticationManager(manager)
