@@ -40,7 +40,7 @@ public class AccountController {
         }
     }
      @DeleteMapping("/deleteAllUsers")
-    public ResponseEntity<ResponseDto> deleteDealer() {
+    public ResponseEntity<String> deleteDealer() {
        try{
        
            return ResponseEntity.status(HttpStatus.OK).body("All users deleted");
