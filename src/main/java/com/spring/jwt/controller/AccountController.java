@@ -39,13 +39,14 @@ public class AccountController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new BaseResponseDTO("Unsuccessful", e.getMessage()));
         }
     }
-     @PostMapping("/deleteAllUsers")
-    public ResponseEntity<BaseResponseDTO> register(@RequestBody @Valid RegisterDto registerDto) {
-        try {
+     @DeleteMapping("/deleteAllUsers")
+    public ResponseEntity<ResponseDto> deleteDealer() {
+       try{
+       
+           return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto("success","All users deleted"));
 
-            return ResponseEntity.ok().body(new BaseResponseDTO("Successful","All Users Deleted" ));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new BaseResponseDTO("Unsuccessful", e.getMessage()));
-        } 
+       }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto("unsuccess",e.getMessage()));
+        }
     }
 }
