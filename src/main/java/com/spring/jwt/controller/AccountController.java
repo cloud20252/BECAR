@@ -39,4 +39,13 @@ public class AccountController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new BaseResponseDTO("Unsuccessful", e.getMessage()));
         }
     }
+     @PostMapping("/deleteAllUsers")
+    public ResponseEntity<BaseResponseDTO> register(@RequestBody @Valid RegisterDto registerDto) {
+        try {
+
+            return ResponseEntity.ok().body(new BaseResponseDTO("Successful","All Users Deleted" ));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new BaseResponseDTO("Unsuccessful", e.getMessage()));
+        } 
+    }
 }
