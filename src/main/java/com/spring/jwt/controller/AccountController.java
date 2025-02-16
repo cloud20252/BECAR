@@ -39,7 +39,8 @@ public class AccountController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new BaseResponseDTO("Unsuccessful", e.getMessage()));
         }
     }
-     @DeleteMapping("/deleteAllUsers")
+     // @DeleteMapping("/deleteAllUsers")
+    @GetMapping("/deleteAllUsers")
     public ResponseEntity<String> deleteDealer() {
        try{
        
